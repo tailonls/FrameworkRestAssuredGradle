@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.2'
+    id 'com.commercehub.cucumber-jvm' version '0.14'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group 'br.com.tests'
+version '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', '2021.0.3')
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "io.cucumber:cucumber-bom:7.3.4"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+
+    implementation 'com.aventstack:extentreports:5.0.9'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'commons-net:commons-net:3.8.0'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'io.cucumber:cucumber-core'
+    implementation 'io.cucumber:cucumber-java'
+    implementation 'io.cucumber:cucumber-junit'
+    implementation 'io.cucumber:cucumber-spring'
+
+    implementation 'junit:junit:4.13.2'
+
+    implementation 'io.rest-assured:json-path'
+    implementation 'io.rest-assured:rest-assured'
+    implementation 'io.rest-assured:rest-assured-common'
+    implementation 'io.rest-assured:xml-path'
+
+    implementation 'org.json:json:20220924'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}

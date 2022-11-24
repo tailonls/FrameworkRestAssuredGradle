@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: { $ENV_PROFILE:qa }
+
+
+logging:
+  level:
+    root: info
+    br.com: debug
+  pattern:
+    console: "%d{ISO8601} %-5level %logger{0}.%M:%L - %msg %n"
+
+report:
+  name: "RelatorioTestes.html"
+  path: "reports/"
