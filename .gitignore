@@ -32,3 +32,10 @@ hs_err_pid*
 /.settings/
 .idea
 /idea
+/reports
+/target
+
+# Arquivos do gradle
+/.gradle
+gradlew
+*.bat
