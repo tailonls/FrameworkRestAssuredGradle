@@ -14,7 +14,7 @@ public class MyFeatureStep {
 
     @Dado("que monto um body para a minha requisição")
     public void queMontoUmBodyParaAMinhaRequisicao() {
-        myFeature.isMyBodybuiltWithSucess();
+        Assert.assertTrue(myFeature.isMyBodybuiltWithSucess());
     }
 
     @Quando("realizo o request para o endpoint")

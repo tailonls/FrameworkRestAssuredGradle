@@ -2,6 +2,7 @@ package br.com.core;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
@@ -71,7 +72,7 @@ public class ReportGenerator {
 
     public void logJson(String json) {
         if (Objects.nonNull(extentSparkReporter) && Objects.nonNull(extentReports)) {
-            extentTest.info(MarkupHelper.createCodeBlock(json));
+            extentTest.info(MarkupHelper.createCodeBlock(json, CodeLanguage.JSON));
             refreshReport();
         }
     }

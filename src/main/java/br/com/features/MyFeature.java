@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.given;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MyFeature extends BaseFeature {
 
-    @Value("${sistem.url}")
+    @Value("${url}")
     private String url;
 
     @Autowired
@@ -33,20 +33,9 @@ public class MyFeature extends BaseFeature {
     public boolean isMyBodybuiltWithSucess() {
         try {
             algoBody = new JSONObject()
-                    .put("algo", "algotmb")
-                    .put("algo2", "algotmb2")
-
-                    .put("meuObjeto", new JSONObject()
-                            .put("algoNoObjeto", "algotmb"))
-
-                    .put("minhaArray", new JSONArray()
-                            .put(new JSONObject()
-                                    .put("algoNaArray", "algoNaArray")
-                                    .put("algoNaArray2", "algoNaArray2")
-                            )
-                            .put(new JSONObject()
-                                    .put("algoNaArray", "algoNaArray")
-                                    .put("algoNaArray2", "algoNaArray2")));
+                    .put("name", "Dalton")
+                    .put("age", 30)
+                    .put("salary", 4000.0);
 
             reportGenerator.logInfo("Body montado com sucesso!");
             reportGenerator.logJson(algoBody.toString());
@@ -100,8 +89,9 @@ public class MyFeature extends BaseFeature {
                     .post(url)
                     .then().log().all().extract().response();
 
-            reportGenerator.logPass("Request envaida com sucesso:");
+            reportGenerator.logPass("Request enviada com sucesso:");
             reportGenerator.logLabel("POST: " + url);
+            return true;
 
         } catch (Exception e) {
             reportGenerator.logFail("Erro ao enviar request: " + e.getMessage());

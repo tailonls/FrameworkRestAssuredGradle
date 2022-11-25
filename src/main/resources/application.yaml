@@ -1,9 +1,9 @@
 spring:
   profiles:
-    active: { $ENV_PROFILE:qa }
+    active: ${ENV_PROFILE:qa}
 
 
-logging:
+logging:gi
   level:
     root: info
     br.com: debug
@@ -13,3 +13,7 @@ logging:
 report:
   name: "RelatorioTestes.html"
   path: "reports/"
+
+alguma:
+  variavel:
+    github: ${VARIAVEL}
